@@ -31,11 +31,17 @@ def write(resdefault, reswish):
     pickle.dump(reswish,fo)
     fo.close()
 
+def show():
+    print("운동종목은", orgexercise, "입니다")
+    print("감량할 체중은", wish_weight, "kg 입니다")
+    print("하루에 해야하는 운동시간은 ", exercise_minutes, "입니다")
+    
 def main(resdefault,reswish):
     while(True):
         person = input("input your information > ").split()#input your name,studentnumber,weight,height and your wish weight
         order = input("input show result or quit")#input order show result or quit동
         try:
+            global wish_weight
             name = person[0]
             number = person[1]
             weight = person[2]#unit:kg
@@ -72,6 +78,7 @@ def main(resdefault,reswish):
             else:#동일인물이 아닌 경우 inbody 측정
                 # 지방 1kg당 약 7000kcal
                 # lose_calorie변수 : 빼야할 체중을 칼로리로 환산한 값
+                global exercise_minutes
                 lose_calorie = 7000 * lose_weight
                 randnum = random.randint(0, numitems - 1)  # 랜덤으로 met의 인덱스 뽑기
                 # 랜덤으로 특정met에서 운동종목 뽑기
@@ -84,9 +91,12 @@ def main(resdefault,reswish):
                     {"name": name, "number": number, "weight": weight, "height": height, "exercise": randexer}]
                 reswish += [
                     {"name": name, "number": number, "lose_weight": lose_weight, "exercise_minutes": exercise_minutes}]
-                """
-                여기에 main()남은 부분 써주시면 될 것 같습니다(입력받은 명령어가 show인지 quit인지에 따라 다른 기능 구현)
-                """
+                if order == 'show':
+                    show()
+                elif order == 'quit':
+                    break
+                else:
+                    print("Invalid command: " + order)
 
            if next:
                 continue #다시 입력받는 곳으로 이동
