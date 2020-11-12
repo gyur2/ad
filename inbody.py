@@ -44,14 +44,18 @@ def main(resdefault, reswish):
             global wish_weight
             name = person[0]
             number = person[1]
-            weight = int(person[2])  # unit:kg
+            weight = person[2]  # unit:kg
             height = person[3]  # unit:cm
             wish_weight = person[4]  # unit:kg
-            exercise_day = int(person[5])  # unit:day
+            exercise_day = person[5]  # unit:day
         except IndexError:
             print("You miss about your informaiton")
             print("Retry to input your informaiton")
             continue
+        if not weight.isdigit() or not wish_weight.isdigit() or not exercise_day.isdigit():
+            print("weight, wish_weight and exercise_day are only number")
+            continue
+
         lose_weight = int(weight) - int(wish_weight)
         if lose_weight < 0:
             print("Your wish weight was bigger than your real weight")
@@ -82,15 +86,14 @@ def main(resdefault, reswish):
                 # 랜덤으로 특정met에서 운동종목 뽑기
                 numexer = len(met[list(met.keys())[randnum]])
                 randexer = (met[list(met.keys())[randnum]])[random.randint(0, numexer - 1)]  # 랜덤으로 뽑힌 운동종목
-                exermet = list(met.keys())[randnum]
-                #exermet = met(list(met.valules()))[randnum]  # 랜덤으로 뽑힌 met
-                whole_exercise_minutes = (lose_calorie * 1000) / (exermet * 5 * 3.5 * weight) # 운동해야 할 총 시간
-                exercise_minutes = whole_exercise_minutes / exercise_day  # 하루에 운동해야 하는 시간
+                exermet = float(list(met.keys())[randnum])
+                whole_exercise_minutes = (int(lose_calorie) * 1000) / (exermet * 5 * 3.5 * float(weight)) # 운동해야 할 총 시간
+                exercise_minutes = whole_exercise_minutes / int(exercise_day)  # 하루에 운동해야 하는 시간
                 resdefault += [{"name": name, "number": number, "weight": weight, "height": height, "exercise": randexer}]
                 reswish += [{"name": name, "number": number, "lose_weight": lose_weight, "exercise_minutes": exercise_minutes}]
 
                 if order == 'show':
-                    BMI = weight / (int(height)/100)** 2
+                    BMI = int(weight) / (int(height)/100)** 2
                     if BMI < 20:
                         condition = '저체중'
                     elif 20 < BMI < 24:
