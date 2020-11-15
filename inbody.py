@@ -3,7 +3,7 @@ import random
 
 filename_personal = "personal.dat"
 filename_wish = "personal_wish.dat"  # information about name,studentnumber, lose weight, exercise minutes
-filename = "met.dat"
+filename = "MET.dat"
 fh = open(filename, "rb")
 met = pickle.load(fh)
 fh.close()
@@ -21,7 +21,24 @@ def read():
     fh = open(filename_personal, "rb")
     info_personal = pickle.load(fh)
     fh.close()
+    fo = open(fdef read():
+    info_peronal = []
+    info_wish = []
+    fh = open(filename_personal, "rb")
+    try:
+        info_personal = pickle.load(fh)
+    except EOFError:#프로그램을 처음 시작할때 빈 파일을 읽게 되어 에러 발생-> 빈 리스트를 반환해주어 해결
+        info_personal = []
+        pass
+    fh.close()
     fo = open(filename_wish, "rb")
+    try:
+        info_wish = pickle.load(fo)
+    except EOFError:#프로그램을 처음 시작할때 빈 파일을 읽게 되어 에러 발생-> 빈 리스트를 반환해주어 해결
+        info_wish = [];
+        pass
+    fo.close()
+    return [info_personal, info_wish]ilename_wish, "rb")
     info_wish = pickle.load(fo)
     fo.close()
     return [info_personal, info_wish]
