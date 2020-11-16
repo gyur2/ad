@@ -1,7 +1,8 @@
-from PyQt5 import QtWidgets,QtCore,QtGui
-from PyQt5.QtWidgets import QApplication,QMainWindow,QPushButton
-import pickle,random,sys
-#메인함수 기능에 필요한 변수 생성
+from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
+import pickle, random, sys
+
+# 메인함수 기능에 필요한 변수 생성
 filename_personal = "personal.dat"
 filename_wish = "personal_wish.dat"  # information about name,studentnumber, lose weight, exercise minutes
 filename = "MET.dat"
@@ -14,12 +15,13 @@ numitems = len(met.values())  # met개수입니다
 class Ui_Form(object):
     def __init__(self):
         super().__init__()
-        #GUI호출
+        # GUI호출
         widget = QtWidgets.QWidget()
         self.setupUi(widget)
         res = self.read()
         self.resdefault = res[0]
         self.reswish = res[1]
+
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(845, 447)
@@ -81,12 +83,9 @@ class Ui_Form(object):
         self.lineEdit_4.setObjectName("lineEdit_4")
         # 결과를 보여주게되는 버튼 추가
         self.showBttn = QtWidgets.QPushButton(Form)
-        self.showBttn.setGeometry(QtCore.QRect(600,200,50,50))
-        self.showBttn.move(600,200)
+        self.showBttn.setGeometry(QtCore.QRect(600, 200, 50, 50))
+        self.showBttn.move(600, 200)
         self.showBttn.clicked.connect(self.bttn_clicked)
-
-
-
 
         self.lineEdit_5 = QtWidgets.QLineEdit(Form)
         self.lineEdit_5.setGeometry(QtCore.QRect(370, 240, 141, 31))
@@ -114,21 +113,21 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label.setText(_translate("Form", "\n"
-"Please enter your height:"))
+                                              "Please enter your height:"))
         self.label_2.setText(_translate("Form", "\n"
-"Please enter your weight:"))
+                                                "Please enter your weight:"))
         self.label_3.setText(_translate("Form", "BMI:"))
         self.label_4.setText(_translate("Form", "\n"
-"Please chose your sports"))
+                                                "Please chose your sports"))
         self.label_5.setText(_translate("Form", "\n"
-"Please set your time/mins"))
+                                                "Please set your time/mins"))
         self.label_6.setText(_translate("Form", "Wish_weight(KG)\n"
-""))
+                                                ""))
         self.label_7.setText(_translate("Form", "학번(number)"))
         self.label_8.setText(_translate("Form", "이름(name)"))
 
-        #버튼 이름 설
-        self.showBttn.setText(_translate("Form","show"))
+        # 버튼 이름 설
+        self.showBttn.setText(_translate("Form", "show"))
 
     def search(self, name, number, resdefault):  # 동일인물일 경우 이전에 측정해둔 몸무게값과 랜덤으로 받았던 운동종목 반환
         for i in resdefault:
@@ -164,7 +163,7 @@ class Ui_Form(object):
 
     def bttn_clicked(self):
         order = self.showBttn.text()
-        self.textBrowser.setText("")
+        self.textBrowser.clear()
 
         global wish_weight
         name = self.lineEdit_7.text()
@@ -173,20 +172,13 @@ class Ui_Form(object):
         height = self.lineEdit.text()  # unit:cm
         wish_weight = self.lineEdit_3.text()  # unit:kg
         exercise_day = self.lineEdit_5.text()  # unit:day
+        lose_weight = int(weight) - int(wish_weight)
         if "" in [name, number, weight, height, wish_weight, exercise_day]:
             self.textBrowser.append("You miss about your informaiton")
             self.textBrowser.append("Retry to input your informaiton")
 
-        if not weight.isdigit() or not wish_weight.isdigit() or not exercise_day.isdigit():
+        elif not weight.isdigit() or not wish_weight.isdigit() or not exercise_day.isdigit():
             self.textBrowser.setText("weight, wish_weight and exercise_day are only number")
-
-        lose_weight = int(weight) - int(wish_weight)
-        if lose_weight < 0:
-            self.textBrowser.append("Your wish weight was bigger than your real weight")
-            self.textBrowser.append("you don't need exercise")
-
-        elif lose_weight == 0:
-            self.textBrowser.setText("Your weight was already you wish wight")
 
         else:
             if lose_weight < 0:
@@ -223,7 +215,7 @@ class Ui_Form(object):
                     self.resdefault += [
                         {"name": name, "number": number, "weight": weight, "height": height, "exercise": randexer}]
                     self.reswish += [{"name": name, "number": number, "lose_weight": lose_weight,
-                                        "exercise_minutes": exercise_minutes}]
+                                      "exercise_minutes": exercise_minutes}]
 
                     if order == 'show':
                         BMI = int(weight) / (int(height) / 100) ** 2
@@ -235,7 +227,7 @@ class Ui_Form(object):
                             condition = '과체중'
                         else:
                             condition = '비만'
-                        BMI=int(BMI)
+                        BMI = int(BMI)
                         self.textBrowser.append("BMI: {}".format(str(BMI)))
                         self.textBrowser.append("상태 : {}".format(condition))
                         self.textBrowser.append("운동종목: {}".format(randexer))
@@ -246,6 +238,8 @@ class Ui_Form(object):
 
     def closeEvent(self, event):
         self.write(self.resdefault, self.reswish)
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     widget = QtWidgets.QWidget()
