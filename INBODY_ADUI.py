@@ -1,20 +1,20 @@
+
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-import pickle, random, sys
+import json, random, sys
 
 # 메인함수 기능에 필요한 변수 생성
-filename_personal = "personal.dat"
-filename_wish = "personal_wish.dat"  # information about name,studentnumber, lose weight, exercise minutes
-filename = "MET.dat"
-fh = open(filename, "rb")
-met = pickle.load(fh)
+filename_personal = "personal.json"
+filename_wish = "personal_wish.json"  # information about name,studentnumber, lose weight, exercise minutes
+filename = "MET.json"
+fh = open(filename, "r")
+met = json.load(fh)
 fh.close()
 numitems = len(met.values())  # met개수입니다
 
 
 class Ui_Form(object):
     def __init__(self):
-        super().__init__()
         # GUI호출
         widget = QtWidgets.QWidget()
         self.setupUi(widget)
@@ -137,28 +137,28 @@ class Ui_Form(object):
     def read(self):
         info_peronal = []
         info_wish = []
-        fh = open(filename_personal, "rb")
+        fh = open(filename_personal, "r")
         try:
-            info_personal = pickle.load(fh)
-        except EOFError:  # 프로그램을 처음 시작할때 빈 파일을 읽게 되어 에러 발생-> 빈 리스트를 반환해주어 해결
+            info_personal = json.load(fh)
+        except json.JSONDecodeError:  # 프로그램을 처음 시작할때 빈 파일을 읽게 되어 에러 발생-> 빈 리스트를 반환해주어 해결
             info_personal = []
             pass
         fh.close()
-        fo = open(filename_wish, "rb")
+        fo = open(filename_wish, "r")
         try:
-            info_wish = pickle.load(fo)
-        except EOFError:  # 프로그램을 처음 시작할때 빈 파일을 읽게 되어 에러 발생-> 빈 리스트를 반환해주어 해결
+            info_wish = json.load(fo)
+        except json.JSONDecodeError:  # 프로그램을 처음 시작할때 빈 파일을 읽게 되어 에러 발생-> 빈 리스트를 반환해주어 해결
             info_wish = []
             pass
         fo.close()
         return [info_personal, info_wish]
 
-    def write(resdefault, reswish):
-        fh = open(filename_personal, "wb")
-        pickle.dump(resdefault, fh)
+    def write(self,resdefault, reswish):
+        fh = open(filename_personal, "w")
+        json.dump(self.resdefault, fh)
         fh.close()
-        fo = open(filename_wish, "wb")
-        pickle.dump(reswish, fo)
+        fo = open(filename_wish, "w")
+        json.dump(self.reswish, fo)
         fo.close()
 
     def bttn_clicked(self):
@@ -206,11 +206,11 @@ class Ui_Form(object):
                     lose_calorie = 7000 * lose_weight
                     randnum = random.randint(0, numitems - 1)  # 랜덤으로 met의 인덱스 뽑기
                     # 랜덤으로 특정met에서 운동종목 뽑기
-                    numexer = len(met[list(met.keys())[randnum]])
+                    numexer = len(met[list(met.keys())[randnum]]) #랜덤으로 뽑힌 met수치에 해당하는 운동종목의 개수
                     randexer = (met[list(met.keys())[randnum]])[random.randint(0, numexer - 1)]  # 랜덤으로 뽑힌 운동종목
-                    exermet = float(list(met.keys())[randnum])
+                    metValue = float(list(met.keys())[randnum])
                     whole_exercise_minutes = (int(lose_calorie) * 1000) / (
-                            exermet * 5 * 3.5 * float(weight))  # 운동해야 할 총 시간
+                            metValue * 5 * 3.5 * float(weight))  # 운동해야 할 총 시간
                     exercise_minutes = whole_exercise_minutes / int(exercise_day)  # 하루에 운동해야 하는 시간
                     self.resdefault += [
                         {"name": name, "number": number, "weight": weight, "height": height, "exercise": randexer}]
