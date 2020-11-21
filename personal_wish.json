@@ -1,0 +1,20 @@
+[
+	{
+		"name": "kim",
+		"number": "20000000",
+		"lose_weight": 22,
+		"exercise_minutes": 81.90008190008189
+	},
+	{
+		"name": "sue",
+		"number": "20002000",
+		"lose_weight": 14,
+		"exercise_minutes": 31.963470319634702
+	},
+	{
+		"name": "park",
+		"number": "20000001",
+		"lose_weight": 11,
+		"exercise_minutes": 10.416666666666666
+	}
+]

@@ -1,0 +1,23 @@
+[
+	{
+		"name": "kim",
+		"number": "20000000",
+		"weight": "88",
+		"height": "177",
+		"exercise": "Bicycle ergometer : 100 Watt"
+	},
+	{
+		"name": "sue",
+		"number": "20002000",
+		"weight": "80",
+		"height": "166",
+		"exercise": "jump rope(60 ~ 100 times/minute)"
+	},
+	{
+		"name": "park",
+		"number": "20000001",
+		"weight": "88",
+		"height": "180",
+		"exercise": "cycling(20km/h)"
+	}
+]
