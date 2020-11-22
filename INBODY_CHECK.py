@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QSizePolicy
 from PyQt5.QtWidgets import QLayout, QGridLayout
 import json, random
 
+"""
 class Button(QToolButton):
 
     def __init__(self, text, callback):
@@ -18,7 +19,7 @@ class Button(QToolButton):
         size.setHeight(size.height() + 20)
         size.setWidth(max(size.width(), size.height()))
         return size
-
+"""
 
 class INBODY(QWidget):
 
@@ -130,6 +131,7 @@ class INBODY(QWidget):
     def buttonClicked(self):
         button = self.sender()
         key = button.text()
+        self.resultD.clear() #버튼 클릭시 빈 결과창으로 시작
         name = self.NameD.text()
         number = self.NumberD.text()
         weight = self.WeightD.text()  # unit:kg
