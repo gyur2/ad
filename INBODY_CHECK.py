@@ -1,25 +1,11 @@
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QStandardItemModel
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QTextEdit
 from PyQt5.QtWidgets import QLineEdit, QToolButton
 from PyQt5.QtWidgets import QSizePolicy
-from PyQt5.QtWidgets import QLayout, QGridLayout
+from PyQt5.QtWidgets import QLayout, QGridLayout,QTreeView,QTreeWidgetItem
 import json, random
 
-"""
-class Button(QToolButton):
-
-    def __init__(self, text, callback):
-        super().__init__()
-        self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        self.setText(text)
-        self.clicked.connect(callback)
-
-    def sizeHint(self):
-        size = super(Button, self).sizeHint()
-        size.setHeight(size.height() + 20)
-        size.setWidth(max(size.width(), size.height()))
-        return size
-"""
 
 class INBODY(QWidget):
 
@@ -42,6 +28,7 @@ class INBODY(QWidget):
         # Button Creation and Placement
         inputLayout = QGridLayout()  # 위- 입력 받는 부분
         outputLayout = QGridLayout()  # 아래- 결과 표시 부분
+        treeviewLayout = QGridLayout()  #트리뷰 표시부분(데이터 구조화)
 
         # 최적화
         # labelgroup = ['학번(number)', '이름(name)', '운동기간(exercise_day)', '키(Height)', '몸무게(Weight)', '희망 몸무게(Wish Weight)']
@@ -89,8 +76,42 @@ class INBODY(QWidget):
         mainLayout = QGridLayout()
         mainLayout.setSizeConstraint(QLayout.SetFixedSize)
 
+
+        ####
+        # treeviewLayout
+        treeviewLayout.addWidget(QLabel("측정 기록",self),0,0)
+        self.textTreeview = QTreeView(self)
+        self.textTreeview.setRootIsDecorated(True)
+        self.textTreeview.setAlternatingRowColors(True)
+        infoHeader = ["번호","이름","학번","체중","키","운동종목","감량할 체중","운동시간"]
+        infoData = ["name","number","weight","height","exercise","lose_weight","exercise_minutes"]
+
+        #헤더(목록)설정
+        self.resultTreeview = QStandardItemModel(0,len(infoHeader),self)
+        for i in range(len(infoHeader)):
+            self.resultTreeview.setHeaderData(i,Qt.Horizontal,infoHeader[i])
+        #내용 표시
+        for i in range(len(self.resdefault)):
+            self.resultTreeview.insertRows(self.resultTreeview.rowCount(),1)
+            for k in range(0,len(infoData)):#처음 5개 항목은 resdefault데이터, 남은 2개 항목은 reswish데이터
+                self.resultTreeview.setData(self.resultTreeview.index(i,0),self.resultTreeview.rowCount())
+                if k<=4: #resdefault 데이터
+                    self.resultTreeview.setData(self.resultTreeview.index(i,k+1),self.resdefault[i][infoData[k]])
+                else:
+                    self.resultTreeview.setData(self.resultTreeview.index(i,k+1),self.reswish[i][infoData[k]])
+
+
+        self.textTreeview.setModel(self.resultTreeview)# 트리뷰위젯에 resultTreeview에서 설정한 내용들을 세팅
+        treeviewLayout.addWidget(self.textTreeview,1,0)
+        #####
+
+
+
+
         mainLayout.addLayout(inputLayout, 0, 0)
-        mainLayout.addLayout(outputLayout, 1, 0)
+        mainLayout.addLayout(treeviewLayout,1,0)
+        mainLayout.addLayout(outputLayout, 2, 0)
+
 
         self.setLayout(mainLayout)
 
