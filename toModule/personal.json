@@ -1,0 +1,72 @@
+[
+	{
+		"name": "kim",
+		"number": "20000000",
+		"weight": "88",
+		"height": "177",
+		"exercise": "Bicycle ergometer : 100 Watt"
+	},
+	{
+		"name": "sue",
+		"number": "20002000",
+		"weight": "80",
+		"height": "166",
+		"exercise": "jump rope(60 ~ 100 times/minute)"
+	},
+	{
+		"name": "park",
+		"number": "20000001",
+		"weight": "88",
+		"height": "180",
+		"exercise": "cycling(20km/h)"
+	},
+	{
+		"name": "k",
+		"number": "2000",
+		"weight": "88",
+		"height": "176",
+		"exercise": "stair-climb"
+	},
+	{
+		"name": "su",
+		"number": "20002004",
+		"weight": "88",
+		"height": "166",
+		"exercise": "Trot(107m/m)"
+	},
+	{
+		"name": "koo",
+		"number": "20208888",
+		"weight": "88",
+		"height": "178",
+		"exercise": "Walking(94m/m)"
+	},
+	{
+		"name": "test",
+		"number": "2020",
+		"weight": "120",
+		"height": "188",
+		"exercise": "stair-climb"
+	},
+	{
+		"name": "jung",
+		"number": "10000000",
+		"weight": "74",
+		"height": "165",
+		"exercise": "baketball"
+	},
+	{
+		"name": "abc",
+		"number": "10000000",
+		"weight": "81",
+		"height": "173",
+		"exercise": "Baseball"
+	},
+	{
+		"name": "bannana",
+		"number": "10001212",
+		"weight": "76",
+		"height": "175",
+		"exercise": "skate"
+	}
+]
