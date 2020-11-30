@@ -158,9 +158,9 @@ class INBODY(QWidget):
                 self.reswish += [{"name": name, "number": number, "lose_weight": lose_weight,
                     "exercise_minutes": exercise_minutes}]
                 if key == 'show':
-                    conditionWegith = self.calcDB.calcBMI(weight,height)
-                    BMI = conditionWegith[0]
-                    condition = conditionWegith[1]
+                    conditionWeigth = self.calcDB.calcBMI(weight,height)
+                    BMI = conditionWeigth[0]
+                    condition = conditionWeigth[1]
                     self.resultD.append("BMI: {}".format(BMI))
                     self.resultD.append("상태 : {}".format(condition))
                     self.resultD.append("운동종목: {}".format(randexer))
