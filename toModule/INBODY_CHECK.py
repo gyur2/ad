@@ -26,37 +26,34 @@ class INBODY(QWidget):
         inputLayout = QGridLayout()  # 위- 입력 받는 부분
         outputLayout = QGridLayout()  # 아래- 결과 표시 부분
         treeviewLayout = QGridLayout()  #트리뷰 표시부분(데이터 구조화)
-
-        # 최적화
-        # labelgroup = ['학번(number)', '이름(name)', '운동기간(exercise_day)', '키(Height)', '몸무게(Weight)', '희망 몸무게(Wish Weight)']
+ 
+        labelgroup = ['학번(number)', '이름(name)', '운동기간(exercise_day)', '키(Height)', '몸무게(Weight)', '희망 몸무게(Wish Weight)']
 
         # inputLayout
         inputLayout = QGridLayout()
-        inputLayout.addWidget(QLabel('학번(number)', self), 0, 0)
 
+        #label 생성
+        r = p = 0
+        for i in range(6):
+            inputLayout.addWidget(QLabel(labelgroup[i], self), r, p)
+            p += 2
+            if (i == 2):
+                r += 1
+                p = 0
+        ###
+        #디스플레이 지정 (각자 이어줌)
         self.NumberD = QLineEdit()
         inputLayout.addWidget(self.NumberD, 0, 1)
-
-        inputLayout.addWidget(QLabel('이름(name)', self), 0, 2)
         self.NameD = QLineEdit()
         inputLayout.addWidget(self.NameD, 0, 3)
-
-        inputLayout.addWidget(QLabel('운동기간(exercise_day)', self), 0, 4)
         self.exercise_dayD = QLineEdit()
         inputLayout.addWidget(self.exercise_dayD, 0, 5)
-
-        inputLayout.addWidget(QLabel('키(Height)', self), 1, 0)
         self.HeightD = QLineEdit()
         inputLayout.addWidget(self.HeightD, 1, 1)
-
-        inputLayout.addWidget(QLabel('몸무게(Weight)', self), 1, 2)
         self.WeightD = QLineEdit()
         inputLayout.addWidget(self.WeightD, 1, 3)
-
-        inputLayout.addWidget(QLabel('희망 몸무게(Wish Weight)', self), 1, 4)
         self.Wish_WeightD = QLineEdit()
         inputLayout.addWidget(self.Wish_WeightD, 1, 5)
-
         self.showB = QPushButton("show", self)
         self.showB.setMaximumHeight(100)
         inputLayout.addWidget(self.showB, 0, 6, 2, 2)
