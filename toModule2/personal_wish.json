@@ -1,0 +1,86 @@
+[
+	{
+		"name": "kim",
+		"number": "20000000",
+		"lose_weight": 22,
+		"exercise_minutes": 81.90008190008189
+	},
+	{
+		"name": "sue",
+		"number": "20002000",
+		"lose_weight": 14,
+		"exercise_minutes": 31.963470319634702
+	},
+	{
+		"name": "park",
+		"number": "20000001",
+		"lose_weight": 11,
+		"exercise_minutes": 10.416666666666666
+	},
+	{
+		"name": "k",
+		"number": "2000",
+		"lose_weight": 22,
+		"exercise_minutes": 54.200542005420054
+	},
+	{
+		"name": "su",
+		"number": "20002004",
+		"lose_weight": 22,
+		"exercise_minutes": 162.60162601626016
+	},
+	{
+		"name": "koo",
+		"number": "20208888",
+		"lose_weight": 19,
+		"exercise_minutes": 75.75757575757576
+	},
+	{
+		"name": "test",
+		"number": "2020",
+		"lose_weight": 30,
+		"exercise_minutes": 11.111111111111112
+	},
+	{
+		"name": "jung",
+		"number": "10000000",
+		"lose_weight": 9,
+		"exercise_minutes": 81.08108108108108
+	},
+	{
+		"name": "abc",
+		"number": "10000000",
+		"lose_weight": 8,
+		"exercise_minutes": 26.33744855967078
+	},
+	{
+		"name": "bannana",
+		"number": "10001212",
+		"lose_weight": 8,
+		"exercise_minutes": 30.075187969924812
+	},
+	{
+		"name": "o",
+		"number": "1",
+		"lose_weight": 15,
+		"exercise_minutes": 1666.6666666666667
+	},
+	{
+		"name": "kown",
+		"number": "181818",
+		"lose_weight": 10,
+		"exercise_minutes": 423.28042328042324
+	},
+	{
+		"name": "kown2",
+		"number": "181818",
+		"lose_weight": 22,
+		"exercise_minutes": 522.875816993464
+	},
+	{
+		"name": "\uae40\ub3c4\uacbd",
+		"number": "20203034",
+		"lose_weight": 6,
+		"exercise_minutes": 15.562940747345385
+	}
+]
