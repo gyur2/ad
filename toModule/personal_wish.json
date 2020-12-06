@@ -58,5 +58,29 @@
 		"number": "10001212",
 		"lose_weight": 8,
 		"exercise_minutes": 30.075187969924812
+	},
+	{
+		"name": "o",
+		"number": "1",
+		"lose_weight": 15,
+		"exercise_minutes": 1666.6666666666667
+	},
+	{
+		"name": "kown",
+		"number": "181818",
+		"lose_weight": 10,
+		"exercise_minutes": 423.28042328042324
+	},
+	{
+		"name": "kown2",
+		"number": "181818",
+		"lose_weight": 22,
+		"exercise_minutes": 522.875816993464
+	},
+	{
+		"name": "\uae40\ub3c4\uacbd",
+		"number": "20203034",
+		"lose_weight": 6,
+		"exercise_minutes": 15.562940747345385
 	}
 ]

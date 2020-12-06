@@ -68,5 +68,33 @@
 		"weight": "76",
 		"height": "175",
 		"exercise": "skate"
+	},
+	{
+		"name": "o",
+		"number": "1",
+		"weight": "60",
+		"height": "165",
+		"exercise": "Weight traning"
+	},
+	{
+		"name": "kown",
+		"number": "181818",
+		"weight": "90",
+		"height": "184",
+		"exercise": "Gymnastics"
+	},
+	{
+		"name": "kown2",
+		"number": "181818",
+		"weight": "102",
+		"height": "184",
+		"exercise": "Bicycle ergometer : 100 Watt"
+	},
+	{
+		"name": "\uae40\ub3c4\uacbd",
+		"number": "20203034",
+		"weight": "65",
+		"height": "165",
+		"exercise": "aerobics"
 	}
 ]
