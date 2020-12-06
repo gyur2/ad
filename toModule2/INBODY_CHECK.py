@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QSizePolicy
 from PyQt5.QtWidgets import QLayout, QGridLayout,QTreeView,QTreeWidgetItem,QDialog
 import json, random
 from listTreeview import infoHeader, infoData, RankHeader
-from funcDB import *
+from funcDB import FuncDB
 from calcDB import CalcDB
 
 class INBODY(QWidget):
@@ -176,22 +176,16 @@ class INBODY(QWidget):
                 else:
                     self.resultD.setText("Invalid commend")
     def rankOPEN(self): #rank 누르면 실행
-
-
+        self.rankWindow = QDialog()
+        self.rankWindow.resize(800,800)
         #Rank새창 세팅
         self.rankWindow.setWindowTitle("Rank exercise")
         self.rankWindow.setWindowModality(Qt.ApplicationModal)
         rankLayout = QGridLayout()
-
-
-
-
         #트리뷰 세팅
         self.rankWindow.rankTreeview = QTreeView(self.rankWindow)
         self.rankWindow.rankTreeview.setRootIsDecorated(True)
         self.rankWindow.rankTreeview.setAlternatingRowColors(True)
-
-
 
         #내용 구성
         self.rankWindow.resultRank = QStandardItemModel(0, len(RankHeader), self.rankWindow)
@@ -207,24 +201,16 @@ class INBODY(QWidget):
                 self.rankWindow.resultRank.setData(self.rankWindow.resultRank.index(i, k + 1), rank[i][k])
 
         self.rankWindow.rankTreeview.setModel(self.rankWindow.resultRank) # 트리뷰위젯에 resultTreeview에서 설정한 내용들을 세팅
-        # 닫기 버튼
-        self.rankWindow.closeBttn = QPushButton("close",self.rankWindow)
-        self.rankWindow.closeBttn.clicked.connect(self.closeRank)
-        rankLayout.addWidget(self.rankWindow.rankTreeview,0,0)
-        rankLayout.addWidget(self.rankWindow.closeBttn,1,0)
-
+        rankLayout.addWidget(self.rankWindow.rankTreeview)
 
         #새창 띄우기
         self.rankWindow.setLayout(rankLayout)
         self.rankWindow.show()
 
 
-    def closeRank(self):
-        self.rankWindow.close()
-
-
     def closeEvent(self, event):
         self.funcDB.write(self.resdefault, self.reswish)
+
 
 if __name__ == '__main__':
     import sys
