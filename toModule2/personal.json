@@ -96,5 +96,40 @@
 		"weight": "65",
 		"height": "165",
 		"exercise": "aerobics"
+	},
+	{
+		"name": "\uae40\ucca0\uc218",
+		"number": "1111111",
+		"weight": "98",
+		"height": "174",
+		"exercise": "the butterfly"
+	},
+	{
+		"name": "k",
+		"number": "15",
+		"weight": "70",
+		"height": "175.1",
+		"exercise": "Golf(using carter)"
+	},
+	{
+		"name": "kk",
+		"number": "16",
+		"weight": "70.2",
+		"height": "175.1",
+		"exercise": "Teakwondo"
+	},
+	{
+		"name": "kp",
+		"number": "16",
+		"weight": "70.2",
+		"height": "175.1",
+		"exercise": "hiking(carry a bag(1~2kg))"
+	},
+	{
+		"name": "ban",
+		"number": "20202020",
+		"weight": "156.6",
+		"height": "178.9",
+		"exercise": "Ping-Pong"
 	}
 ]

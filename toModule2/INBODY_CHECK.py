@@ -131,7 +131,7 @@ class INBODY(QWidget):
                 orgdata = self.funcDB.search(name, number, self.resdefault)
                 orgweight = orgdata[0]  # 이전에 측정해둔 몸무게
                 orgexercise = orgdata[1]  # 이전에 랜덤으로 뽑았던 운동종목정
-                self.resultD.append("이전에 측정하셨 데이터가 존재합니다")
+                self.resultD.append("이전에 측정하셨던 데이터가 존재합니다")
                 self.resultD.append("현재 몸무게: {}".format(orgweight))
                 self.resultD.append("운동 종목: {}".format(orgexercise))
                 self.resultD.append("하루에 해야하는 운동시간: %.4f분" % i["exercise_minutes"])  # 소수점 4자리까지
@@ -141,10 +141,12 @@ class INBODY(QWidget):
             self.resultD.append("You miss about your informaiton")
             self.resultD.append("Retry to input your informaiton")
 
-        elif not weight.isdigit() or not wish_weight.isdigit() or not exercise_day.isdigit():
-            self.resultD.setText("weight, wish_weight and exercise_day are only number")
+        elif not exercise_day.isdigit() or not number.isdigit():
+            self.resultD.setText("You should input number(int type!) for your exercise_day,number!")
+        elif not height.replace(".","",1).isdigit() or not weight.replace(".","",1).isdigit() or not wish_weight.replace(".","",1).isdigit():
+            self.resultD.setText("You should input number(int or float type!) for your weight,height,wish_weight!")
         else:
-            lose_weight = int(weight) - int(wish_weight)
+            lose_weight = float(weight) - float(wish_weight)
             if lose_weight < 0:
                 self.resultD.append("Your wish weight was bigger than your real weight")
                 self.resultD.append("you don't need exercise")

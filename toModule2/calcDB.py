@@ -22,7 +22,7 @@ class CalcDB:
         exercise_minutes = whole_exercise_minutes / int(exercise_day)  # 하루에 운동해야 하는 시간
         return [randexer,exercise_minutes]
     def calcBMI(self,weight,height):
-        BMI = int(weight) / (int(height) / 100) ** 2
+        BMI = float(weight) / (float(height) / 100) ** 2
         if BMI < 20:
             condition = '저체중'
         elif 20 < BMI < 24:

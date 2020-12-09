@@ -82,5 +82,35 @@
 		"number": "20203034",
 		"lose_weight": 6,
 		"exercise_minutes": 15.562940747345385
+	},
+	{
+		"name": "\uae40\ucca0\uc218",
+		"number": "1111111",
+		"lose_weight": 11,
+		"exercise_minutes": 13.60544217687075
+	},
+	{
+		"name": "k",
+		"number": "15",
+		"lose_weight": 6,
+		"exercise_minutes": 1632.6530612244896
+	},
+	{
+		"name": "kk",
+		"number": "16",
+		"lose_weight": 6,
+		"exercise_minutes": 1424.5014245014245
+	},
+	{
+		"name": "kp",
+		"number": "16",
+		"lose_weight": 6,
+		"exercise_minutes": 759.7340930674263
+	},
+	{
+		"name": "ban",
+		"number": "20202020",
+		"lose_weight": 55.8,
+		"exercise_minutes": 70.41933578665213
 	}
 ]
