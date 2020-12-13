@@ -179,7 +179,7 @@ class INBODY(QWidget):
                     self.resultD.setText("Invalid commend")
     def rankOPEN(self): #rank 누르면 실행
         self.rankWindow = QDialog()
-        self.rankWindow.resize(800,800)
+        self.rankWindow.resize(500, 300)
         #Rank새창 세팅
         self.rankWindow.setWindowTitle("Rank exercise")
         self.rankWindow.setWindowModality(Qt.ApplicationModal)
