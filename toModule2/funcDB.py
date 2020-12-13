@@ -27,7 +27,7 @@ class FuncDB:
                 if (val < cv[i]):
                     val = count[r]
                     idx = r
-            rank+= [[str(idx), str(val) + '!', str((val/total)*100) + '%']]
+            rank+= [[str(idx), str(val) + '!', '%.2f %%'%((val/total)*100) ]]
             count[idx] = -1
             val = 0
             idx = ''
